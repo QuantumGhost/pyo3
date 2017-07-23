@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `PyObject` struct in crate `pyo3`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, PyObject">
+
+    <title>pyo3::PyObject - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct PyObject</p><div class="block items"><ul><li><a href="#methods">Methods</a></li><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='index.html'>pyo3</a></p><script>window.sidebarCurrent = {name: 'PyObject', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>pyo3</a>::<wbr><a class="struct" href=''>PyObject</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/pyo3/object.rs.html#16' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct PyObject(_);</pre><div class='docblock'><p>Safe wrapper around unsafe <code>*mut ffi::PyObject</code> pointer.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../pyo3/struct.PyObject.html" title="struct pyo3::PyObject">PyObject</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/pyo3/object.rs.html#23-213' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.from_owned_ptr' class="method"><span id='from_owned_ptr.v' class='invisible'><code>unsafe fn <a href='#method.from_owned_ptr' class='fnname'>from_owned_ptr</a>(_py: <a class="struct" href="../pyo3/struct.Python.html" title="struct pyo3::Python">Python</a>, ptr: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="struct" href="../pyo3/ffi/struct.PyObject.html" title="struct pyo3::ffi::PyObject">PyObject</a>) -&gt; <a class="struct" href="../pyo3/struct.PyObject.html" title="struct pyo3::PyObject">PyObject</a></code></span></h4>
+<div class='docblock'><p>Creates a <code>PyObject</code> instance for the given FFI pointer.
+This moves ownership over the pointer into the <code>PyObject</code>.
+Undefined behavior if the pointer is NULL or invalid.</p>
+</div><h4 id='method.from_owned_ptr_or_panic' class="method"><span id='from_owned_ptr_or_panic.v' class='invisible'><code>unsafe fn <a href='#method.from_owned_ptr_or_panic' class='fnname'>from_owned_ptr_or_panic</a>(py: <a class="struct" href="../pyo3/struct.Python.html" title="struct pyo3::Python">Python</a>, ptr: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="struct" href="../pyo3/ffi/struct.PyObject.html" title="struct pyo3::ffi::PyObject">PyObject</a>) -&gt; <a class="struct" href="../pyo3/struct.PyObject.html" title="struct pyo3::PyObject">PyObject</a></code></span></h4>
+<div class='docblock'><p>Creates a <code>PyObject</code> instance for the given FFI pointer.
+Panics if the pointer is <code>null</code>.
+Undefined behavior if the pointer is invalid.</p>
+</div><h4 id='method.from_owned_ptr_or_err' class="method"><span id='from_owned_ptr_or_err.v' class='invisible'><code>fn <a href='#method.from_owned_ptr_or_err' class='fnname'>from_owned_ptr_or_err</a>(py: <a class="struct" href="../pyo3/struct.Python.html" title="struct pyo3::Python">Python</a>, ptr: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="struct" href="../pyo3/ffi/struct.PyObject.html" title="struct pyo3::ffi::PyObject">PyObject</a>) -&gt; <a class="type" href="../pyo3/type.PyResult.html" title="type pyo3::PyResult">PyResult</a>&lt;<a class="struct" href="../pyo3/struct.PyObject.html" title="struct pyo3::PyObject">PyObject</a>&gt;</code></span></h4>
+<div class='docblock'><p>Construct <code>PyObject</code> from the result of a Python FFI call that
+returns a new reference (owned pointer).
+Returns <code>Err(PyErr)</code> if the pointer is <code>null</code>.</p>
+</div><h4 id='method.from_owned_ptr_or_opt' class="method"><span id='from_owned_ptr_or_opt.v' class='invisible'><code>fn <a href='#method.from_owned_ptr_or_opt' class='fnname'>from_owned_ptr_or_opt</a>(py: <a class="struct" href="../pyo3/struct.Python.html" title="struct pyo3::Python">Python</a>, ptr: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="struct" href="../pyo3/ffi/struct.PyObject.html" title="struct pyo3::ffi::PyObject">PyObject</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../pyo3/struct.PyObject.html" title="struct pyo3::PyObject">PyObject</a>&gt;</code></span></h4>
+<div class='docblock'><p>Construct <code>PyObject</code> from the result of a Python FFI call that
+returns a new reference (owned pointer).
+Returns <code>None</code> if the pointer is <code>null</code>.</p>
+</div><h4 id='method.from_borrowed_ptr' class="method"><span id='from_borrowed_ptr.v' class='invisible'><code>unsafe fn <a href='#method.from_borrowed_ptr' class='fnname'>from_borrowed_ptr</a>(_py: <a class="struct" href="../pyo3/struct.Python.html" title="struct pyo3::Python">Python</a>, ptr: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="struct" href="../pyo3/ffi/struct.PyObject.html" title="struct pyo3::ffi::PyObject">PyObject</a>) -&gt; <a class="struct" href="../pyo3/struct.PyObject.html" title="struct pyo3::PyObject">PyObject</a></code></span></h4>
+<div class='docblock'><p>Creates a <code>PyObject</code> instance for the given Python FFI pointer.
+Calls Py_INCREF() on the ptr.
+Undefined behavior if the pointer is NULL or invalid.</p>
+</div><h4 id='method.from_borrowed_ptr_or_err' class="method"><span id='from_borrowed_ptr_or_err.v' class='invisible'><code>fn <a href='#method.from_borrowed_ptr_or_err' class='fnname'>from_borrowed_ptr_or_err</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;py: <a class="struct" href="../pyo3/struct.Python.html" title="struct pyo3::Python">Python</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;ptr: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="struct" href="../pyo3/ffi/struct.PyObject.html" title="struct pyo3::ffi::PyObject">PyObject</a><br>) -&gt; <a class="type" href="../pyo3/type.PyResult.html" title="type pyo3::PyResult">PyResult</a>&lt;<a class="struct" href="../pyo3/struct.PyObject.html" title="struct pyo3::PyObject">PyObject</a>&gt;</code></span></h4>
+<div class='docblock'><p>Creates a <code>PyObject</code> instance for the given Python FFI pointer.
+Calls Py_INCREF() on the ptr.
+Returns <code>Err(PyErr)</code> if the pointer is <code>null</code>.</p>
+</div><h4 id='method.from_borrowed_ptr_or_opt' class="method"><span id='from_borrowed_ptr_or_opt.v' class='invisible'><code>fn <a href='#method.from_borrowed_ptr_or_opt' class='fnname'>from_borrowed_ptr_or_opt</a>(py: <a class="struct" href="../pyo3/struct.Python.html" title="struct pyo3::Python">Python</a>, ptr: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="struct" href="../pyo3/ffi/struct.PyObject.html" title="struct pyo3::ffi::PyObject">PyObject</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../pyo3/struct.PyObject.html" title="struct pyo3::PyObject">PyObject</a>&gt;</code></span></h4>
+<div class='docblock'><p>Creates a <code>PyObject</code> instance for the given Python FFI pointer.
+Calls Py_INCREF() on the ptr.
+Returns <code>None</code> if the pointer is <code>null</code>.</p>
+</div><h4 id='method.borrow_from_owned_ptr_slice' class="method"><span id='borrow_from_owned_ptr_slice.v' class='invisible'><code>unsafe fn <a href='#method.borrow_from_owned_ptr_slice' class='fnname'>borrow_from_owned_ptr_slice</a>(ptr: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="struct" href="../pyo3/ffi/struct.PyObject.html" title="struct pyo3::ffi::PyObject">PyObject</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;[</a><a class="struct" href="../pyo3/struct.PyObject.html" title="struct pyo3::PyObject">PyObject</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a></code></span></h4>
+<div class='docblock'><p>Transmutes a slice of owned FFI pointers to <code>&amp;[PyObject]</code>.
+Undefined behavior if any pointer in the slice is NULL or invalid.</p>
+</div><h4 id='method.get_refcnt' class="method"><span id='get_refcnt.v' class='invisible'><code>fn <a href='#method.get_refcnt' class='fnname'>get_refcnt</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a></code></span></h4>
+<div class='docblock'><p>Gets the reference count of the ffi::PyObject pointer.</p>
+</div><h4 id='method.clone_ref' class="method"><span id='clone_ref.v' class='invisible'><code>fn <a href='#method.clone_ref' class='fnname'>clone_ref</a>(&amp;self, py: <a class="struct" href="../pyo3/struct.Python.html" title="struct pyo3::Python">Python</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Clone self, Calls Py_INCREF() on the ptr.</p>
+</div><h4 id='method.is_none' class="method"><span id='is_none.v' class='invisible'><code>fn <a href='#method.is_none' class='fnname'>is_none</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>Returns whether the object is considered to be None.
+This is equivalent to the Python expression: &#39;is None&#39;</p>
+</div><h4 id='method.is_true' class="method"><span id='is_true.v' class='invisible'><code>fn <a href='#method.is_true' class='fnname'>is_true</a>(&amp;self, py: <a class="struct" href="../pyo3/struct.Python.html" title="struct pyo3::Python">Python</a>) -&gt; <a class="type" href="../pyo3/type.PyResult.html" title="type pyo3::PyResult">PyResult</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt;</code></span></h4>
+<div class='docblock'><p>Returns whether the object is considered to be true.
+This is equivalent to the Python expression: &#39;not not self&#39;</p>
+</div><h4 id='method.cast_as' class="method"><span id='cast_as.v' class='invisible'><code>fn <a href='#method.cast_as' class='fnname'>cast_as</a>&lt;D&gt;(&amp;self, py: <a class="struct" href="../pyo3/struct.Python.html" title="struct pyo3::Python">Python</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;D&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;D: <a class="trait" href="../pyo3/trait.PyDowncastFrom.html" title="trait pyo3::PyDowncastFrom">PyDowncastFrom</a>,&nbsp;</span></code></span></h4>
+<div class='docblock'><p>Casts the PyObject to a concrete Python object type.</p>
+</div><h4 id='method.extract' class="method"><span id='extract.v' class='invisible'><code>fn <a href='#method.extract' class='fnname'>extract</a>&lt;'p, D&gt;(&amp;'p self, py: <a class="struct" href="../pyo3/struct.Python.html" title="struct pyo3::Python">Python</a>) -&gt; <a class="type" href="../pyo3/type.PyResult.html" title="type pyo3::PyResult">PyResult</a>&lt;D&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;D: <a class="trait" href="../pyo3/trait.FromPyObject.html" title="trait pyo3::FromPyObject">FromPyObject</a>&lt;'p&gt;,&nbsp;</span></code></span></h4>
+<div class='docblock'><p>Extracts some type from the Python object.
+This is a wrapper function around <code>FromPyObject::extract()</code>.</p>
+</div><h4 id='method.getattr' class="method"><span id='getattr.v' class='invisible'><code>fn <a href='#method.getattr' class='fnname'>getattr</a>&lt;N&gt;(&amp;self, py: <a class="struct" href="../pyo3/struct.Python.html" title="struct pyo3::Python">Python</a>, attr_name: N) -&gt; <a class="type" href="../pyo3/type.PyResult.html" title="type pyo3::PyResult">PyResult</a>&lt;<a class="struct" href="../pyo3/struct.PyObject.html" title="struct pyo3::PyObject">PyObject</a>&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;N: <a class="trait" href="../pyo3/trait.ToPyObject.html" title="trait pyo3::ToPyObject">ToPyObject</a>,&nbsp;</span></code></span></h4>
+<div class='docblock'><p>Retrieves an attribute value.
+This is equivalent to the Python expression &#39;self.attr_name&#39;.</p>
+</div><h4 id='method.call' class="method"><span id='call.v' class='invisible'><code>fn <a href='#method.call' class='fnname'>call</a>&lt;A&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;py: <a class="struct" href="../pyo3/struct.Python.html" title="struct pyo3::Python">Python</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;args: A, <br>&nbsp;&nbsp;&nbsp;&nbsp;kwargs: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="struct" href="../pyo3/struct.PyDict.html" title="struct pyo3::PyDict">PyDict</a>&gt;<br>) -&gt; <a class="type" href="../pyo3/type.PyResult.html" title="type pyo3::PyResult">PyResult</a>&lt;<a class="struct" href="../pyo3/struct.PyObject.html" title="struct pyo3::PyObject">PyObject</a>&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;A: <a class="trait" href="../pyo3/trait.IntoPyTuple.html" title="trait pyo3::IntoPyTuple">IntoPyTuple</a>,&nbsp;</span></code></span></h4>
+<div class='docblock'><p>Calls the object.
+This is equivalent to the Python expression: &#39;self(*args, **kwargs)&#39;</p>
+</div><h4 id='method.call_method' class="method"><span id='call_method.v' class='invisible'><code>fn <a href='#method.call_method' class='fnname'>call_method</a>&lt;A&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;py: <a class="struct" href="../pyo3/struct.Python.html" title="struct pyo3::Python">Python</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;args: A, <br>&nbsp;&nbsp;&nbsp;&nbsp;kwargs: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="struct" href="../pyo3/struct.PyDict.html" title="struct pyo3::PyDict">PyDict</a>&gt;<br>) -&gt; <a class="type" href="../pyo3/type.PyResult.html" title="type pyo3::PyResult">PyResult</a>&lt;<a class="struct" href="../pyo3/struct.PyObject.html" title="struct pyo3::PyObject">PyObject</a>&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;A: <a class="trait" href="../pyo3/trait.IntoPyTuple.html" title="trait pyo3::IntoPyTuple">IntoPyTuple</a>,&nbsp;</span></code></span></h4>
+<div class='docblock'><p>Calls a method on the object.
+This is equivalent to the Python expression: &#39;self.name(*args, **kwargs)&#39;</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl&lt;T&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html" title="trait core::convert::From">From</a>&lt;<a class="struct" href="../pyo3/struct.Py.html" title="struct pyo3::Py">Py</a>&lt;T&gt;&gt; for <a class="struct" href="../pyo3/struct.PyObject.html" title="struct pyo3::PyObject">PyObject</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/pyo3/instance.rs.html#287-292' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.from' class="method"><span id='from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from' class='fnname'>from</a>(ob: <a class="struct" href="../pyo3/struct.Py.html" title="struct pyo3::Py">Py</a>&lt;T&gt;) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Performs the conversion.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;'a, T&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html" title="trait core::convert::From">From</a>&lt;&amp;'a T&gt; for <a class="struct" href="../pyo3/struct.PyObject.html" title="struct pyo3::PyObject">PyObject</a> <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="../pyo3/trait.ToPyPointer.html" title="trait pyo3::ToPyPointer">ToPyPointer</a>,&nbsp;</span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/pyo3/instance.rs.html#310-316' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.from-1' class="method"><span id='from.v-1' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from' class='fnname'>from</a>(ob: &amp;'a T) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Performs the conversion.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;'a, T&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html" title="trait core::convert::From">From</a>&lt;&amp;'a mut T&gt; for <a class="struct" href="../pyo3/struct.PyObject.html" title="struct pyo3::PyObject">PyObject</a> <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="../pyo3/trait.ToPyPointer.html" title="trait pyo3::ToPyPointer">ToPyPointer</a>,&nbsp;</span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/pyo3/instance.rs.html#318-324' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.from-2' class="method"><span id='from.v-2' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from' class='fnname'>from</a>(ob: &amp;'a mut T) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Performs the conversion.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> for <a class="struct" href="../pyo3/struct.PyObject.html" title="struct pyo3::PyObject">PyObject</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/pyo3/object.rs.html#15' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt' class="method"><span id='fmt.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html" title="struct core::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html" title="type core::fmt::Result">Result</a></code></span></h4>
+<div class='docblock'><p>Formats the value using the given formatter.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> for <a class="struct" href="../pyo3/struct.PyObject.html" title="struct pyo3::PyObject">PyObject</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/pyo3/object.rs.html#19' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html" title="trait core::marker::Sync">Sync</a> for <a class="struct" href="../pyo3/struct.PyObject.html" title="struct pyo3::PyObject">PyObject</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/pyo3/object.rs.html#20' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="../pyo3/trait.AsPyRef.html" title="trait pyo3::AsPyRef">AsPyRef</a>&lt;<a class="struct" href="../pyo3/struct.PyObjectRef.html" title="struct pyo3::PyObjectRef">PyObjectRef</a>&gt; for <a class="struct" href="../pyo3/struct.PyObject.html" title="struct pyo3::PyObject">PyObject</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/pyo3/object.rs.html#215-225' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.as_ref' class="method"><span id='as_ref.v' class='invisible'><code>fn <a href='../pyo3/trait.AsPyRef.html#tymethod.as_ref' class='fnname'>as_ref</a>(&amp;self, _py: <a class="struct" href="../pyo3/struct.Python.html" title="struct pyo3::Python">Python</a>) -&gt; &amp;<a class="struct" href="../pyo3/struct.PyObjectRef.html" title="struct pyo3::PyObjectRef">PyObjectRef</a></code></span></h4>
+<div class='docblock'><p>Return reference to object.</p>
+</div><h4 id='method.as_mut' class="method"><span id='as_mut.v' class='invisible'><code>fn <a href='../pyo3/trait.AsPyRef.html#tymethod.as_mut' class='fnname'>as_mut</a>(&amp;self, _py: <a class="struct" href="../pyo3/struct.Python.html" title="struct pyo3::Python">Python</a>) -&gt; &amp;mut <a class="struct" href="../pyo3/struct.PyObjectRef.html" title="struct pyo3::PyObjectRef">PyObjectRef</a></code></span></h4>
+<div class='docblock'><p>Return mutable reference to object.</p>
+</div><h4 id='method.with' class="method"><span id='with.v' class='invisible'><code>fn <a href='../pyo3/trait.AsPyRef.html#method.with' class='fnname'>with</a>&lt;F, R&gt;(&amp;self, f: F) -&gt; R <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.FnOnce.html" title="trait core::ops::function::FnOnce">FnOnce</a>(<a class="struct" href="../pyo3/struct.Python.html" title="struct pyo3::Python">Python</a>, &amp;T) -&gt; R,&nbsp;</span></code></span></h4>
+<div class='docblock'><p>Acquire python gil and call closure with object reference.</p>
+</div><h4 id='method.with_mut' class="method"><span id='with_mut.v' class='invisible'><code>fn <a href='../pyo3/trait.AsPyRef.html#method.with_mut' class='fnname'>with_mut</a>&lt;F, R&gt;(&amp;self, f: F) -&gt; R <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.FnOnce.html" title="trait core::ops::function::FnOnce">FnOnce</a>(<a class="struct" href="../pyo3/struct.Python.html" title="struct pyo3::Python">Python</a>, &amp;mut T) -&gt; R,&nbsp;</span></code></span></h4>
+<div class='docblock'><p>Acquire python gil and call closure with mutable object reference.</p>
+</div><h4 id='method.into_py' class="method"><span id='into_py.v' class='invisible'><code>fn <a href='../pyo3/trait.AsPyRef.html#method.into_py' class='fnname'>into_py</a>&lt;F, R&gt;(self, f: F) -&gt; R <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;Self: <a class="trait" href="../pyo3/trait.IntoPyPointer.html" title="trait pyo3::IntoPyPointer">IntoPyPointer</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.FnOnce.html" title="trait core::ops::function::FnOnce">FnOnce</a>(<a class="struct" href="../pyo3/struct.Python.html" title="struct pyo3::Python">Python</a>, &amp;T) -&gt; R,&nbsp;</span></code></span></h4>
+<h4 id='method.into_mut_py' class="method"><span id='into_mut_py.v' class='invisible'><code>fn <a href='../pyo3/trait.AsPyRef.html#method.into_mut_py' class='fnname'>into_mut_py</a>&lt;F, R&gt;(self, f: F) -&gt; R <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;Self: <a class="trait" href="../pyo3/trait.IntoPyPointer.html" title="trait pyo3::IntoPyPointer">IntoPyPointer</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.FnOnce.html" title="trait core::ops::function::FnOnce">FnOnce</a>(<a class="struct" href="../pyo3/struct.Python.html" title="struct pyo3::Python">Python</a>, &amp;mut T) -&gt; R,&nbsp;</span></code></span></h4>
+</div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="../pyo3/trait.ToPyObject.html" title="trait pyo3::ToPyObject">ToPyObject</a> for <a class="struct" href="../pyo3/struct.PyObject.html" title="struct pyo3::PyObject">PyObject</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/pyo3/object.rs.html#227-240' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.to_object' class="method"><span id='to_object.v' class='invisible'><code>fn <a href='../pyo3/trait.ToPyObject.html#tymethod.to_object' class='fnname'>to_object</a>&lt;'p&gt;(&amp;self, py: <a class="struct" href="../pyo3/struct.Python.html" title="struct pyo3::Python">Python</a>&lt;'p&gt;) -&gt; <a class="struct" href="../pyo3/struct.PyObject.html" title="struct pyo3::PyObject">PyObject</a></code></span></h4>
+<div class='docblock'><p>Converts self into a Python object.</p>
+</div><h4 id='method.with_borrowed_ptr' class="method"><span id='with_borrowed_ptr.v' class='invisible'><code>fn <a href='../pyo3/trait.ToPyObject.html#method.with_borrowed_ptr' class='fnname'>with_borrowed_ptr</a>&lt;F, R&gt;(&amp;self, _py: <a class="struct" href="../pyo3/struct.Python.html" title="struct pyo3::Python">Python</a>, f: F) -&gt; R <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.FnOnce.html" title="trait core::ops::function::FnOnce">FnOnce</a>(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="struct" href="../pyo3/ffi/struct.PyObject.html" title="struct pyo3::ffi::PyObject">PyObject</a>) -&gt; R,&nbsp;</span></code></span></h4>
+<div class='docblock'><p>Converts self into a Python object and calls the specified closure on the native FFI pointer underlying the Python object. <a href="../pyo3/trait.ToPyObject.html#method.with_borrowed_ptr">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="../pyo3/trait.ToPyPointer.html" title="trait pyo3::ToPyPointer">ToPyPointer</a> for <a class="struct" href="../pyo3/struct.PyObject.html" title="struct pyo3::PyObject">PyObject</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/pyo3/object.rs.html#242-248' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.as_ptr' class="method"><span id='as_ptr.v' class='invisible'><code>fn <a href='../pyo3/trait.ToPyPointer.html#tymethod.as_ptr' class='fnname'>as_ptr</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="struct" href="../pyo3/ffi/struct.PyObject.html" title="struct pyo3::ffi::PyObject">PyObject</a></code></span></h4>
+<div class='docblock'><p>Gets the underlying FFI pointer, returns a borrowed pointer.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="trait" href="../pyo3/trait.ToPyPointer.html" title="trait pyo3::ToPyPointer">ToPyPointer</a> for &amp;'a <a class="struct" href="../pyo3/struct.PyObject.html" title="struct pyo3::PyObject">PyObject</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/pyo3/object.rs.html#250-256' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.as_ptr-1' class="method"><span id='as_ptr.v-1' class='invisible'><code>fn <a href='../pyo3/trait.ToPyPointer.html#tymethod.as_ptr' class='fnname'>as_ptr</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="struct" href="../pyo3/ffi/struct.PyObject.html" title="struct pyo3::ffi::PyObject">PyObject</a></code></span></h4>
+<div class='docblock'><p>Gets the underlying FFI pointer, returns a borrowed pointer.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="../pyo3/trait.IntoPyPointer.html" title="trait pyo3::IntoPyPointer">IntoPyPointer</a> for <a class="struct" href="../pyo3/struct.PyObject.html" title="struct pyo3::PyObject">PyObject</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/pyo3/object.rs.html#258-267' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.into_ptr' class="method"><span id='into_ptr.v' class='invisible'><code>fn <a href='../pyo3/trait.IntoPyPointer.html#tymethod.into_ptr' class='fnname'>into_ptr</a>(self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="struct" href="../pyo3/ffi/struct.PyObject.html" title="struct pyo3::ffi::PyObject">PyObject</a></code></span></h4>
+<div class='docblock'><p>Gets the underlying FFI pointer, returns a owned pointer.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html" title="trait core::cmp::PartialEq">PartialEq</a> for <a class="struct" href="../pyo3/struct.PyObject.html" title="struct pyo3::PyObject">PyObject</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/pyo3/object.rs.html#269-274' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.eq' class="method"><span id='eq.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq' class='fnname'>eq</a>(&amp;self, o: &amp;<a class="struct" href="../pyo3/struct.PyObject.html" title="struct pyo3::PyObject">PyObject</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>This method tests for <code>self</code> and <code>other</code> values to be equal, and is used by <code>==</code>. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq">Read more</a></p>
+</div><h4 id='method.ne' class="method"><span id='ne.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.ne' class='fnname'>ne</a>(&amp;self, other: &amp;Rhs) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div></span></h4>
+<div class='docblock'><p>This method tests for <code>!=</code>.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="../pyo3/trait.IntoPyObject.html" title="trait pyo3::IntoPyObject">IntoPyObject</a> for <a class="struct" href="../pyo3/struct.PyObject.html" title="struct pyo3::PyObject">PyObject</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/pyo3/object.rs.html#276-282' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.into_object' class="method"><span id='into_object.v' class='invisible'><code>fn <a href='../pyo3/trait.IntoPyObject.html#tymethod.into_object' class='fnname'>into_object</a>(self, _py: <a class="struct" href="../pyo3/struct.Python.html" title="struct pyo3::Python">Python</a>) -&gt; <a class="struct" href="../pyo3/struct.PyObject.html" title="struct pyo3::PyObject">PyObject</a></code></span></h4>
+<div class='docblock'><p>Converts self into a Python object. (Consumes self)</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="trait" href="../pyo3/trait.FromPyObject.html" title="trait pyo3::FromPyObject">FromPyObject</a>&lt;'a&gt; for <a class="struct" href="../pyo3/struct.PyObject.html" title="struct pyo3::PyObject">PyObject</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/pyo3/object.rs.html#284-294' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.extract-1' class="method"><span id='extract.v-1' class='invisible'><code>fn <a href='../pyo3/trait.FromPyObject.html#tymethod.extract' class='fnname'>extract</a>(ob: &amp;'a <a class="struct" href="../pyo3/struct.PyObjectRef.html" title="struct pyo3::PyObjectRef">PyObjectRef</a>) -&gt; <a class="type" href="../pyo3/type.PyResult.html" title="type pyo3::PyResult">PyResult</a>&lt;Self&gt;</code></span></h4>
+<div class='docblock'><p>Extracts <code>Self</code> from the source <code>PyObject</code>.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/drop/trait.Drop.html" title="trait core::ops::drop::Drop">Drop</a> for <a class="struct" href="../pyo3/struct.PyObject.html" title="struct pyo3::PyObject">PyObject</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/pyo3/object.rs.html#297-302' title='goto source code'>[src]</a></span></h3>
+<div class='docblock'><p>Dropping a <code>PyObject</code> instance decrements the reference count on the object by 1.</p>
+</div><div class='impl-items'><h4 id='method.drop' class="method"><span id='drop.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/drop/trait.Drop.html#tymethod.drop' class='fnname'>drop</a>(&amp;mut self)</code></span></h4>
+<div class='docblock'><p>A method called when the value goes out of scope. <a href="https://doc.rust-lang.org/nightly/core/ops/drop/trait.Drop.html#tymethod.drop">Read more</a></p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "pyo3";
+    </script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>
